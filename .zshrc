@@ -6,6 +6,7 @@ export MAVEN_OPTS=-Xmx2g
 export VOLDEMORT_HOME=/usr/local/Cellar/voldemort/0.81/libexec
 export NODE_HOME=/usr/local/lib/node_modules
 
+export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/tools/maven-mp/bin:$PATH
 export PATH=$HOME/code/cas/scripts:$PATH
 export PATH=$HOME/bin:$PATH
@@ -15,6 +16,7 @@ alias sz='source ~/.zshrc'
 alias ez='emacs ~/.zshrc'
 alias gitk='gitx'
 alias td='tmux detach'
+alias ta='tmux attach -t default'
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -68,7 +70,7 @@ setopt RM_STAR_WAIT
 setopt ZLE
 
 # Autoload tmux if we aren't in it
-[[ $TERM != "screen" ]] && tmux attach -t default
+[[ $TERM != "screen-256color" ]] && tmux attach -t default
 #[[ $TERM != "screen" ]] && screen -ARR && exit
 
 # URL encode something and print it.
