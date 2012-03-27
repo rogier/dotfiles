@@ -1,12 +1,12 @@
-export EDITOR=emacs
+export EDITOR='emacs -nw'
 export VIEW=elinks
-
+export M2_HOME=/Users/ropeters/tools/maven-mp
 export JAVA_HOME=`/usr/libexec/java_home`
 export MAVEN_OPTS=-Xmx2g
 export VOLDEMORT_HOME=/usr/local/Cellar/voldemort/0.81/libexec
 export NODE_HOME=/usr/local/lib/node_modules
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/mysql/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$HOME/tools/maven-mp/bin:$PATH
 export PATH=$HOME/code/cas/scripts:$PATH
 export PATH=$HOME/bin:$PATH
