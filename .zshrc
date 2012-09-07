@@ -1,3 +1,4 @@
+export SERVICES=/Users/ropeters/code/aurora
 export EDITOR='emacs -nw'
 export VIEW=elinks
 export M2_HOME=/Users/ropeters/tools/maven-mp
@@ -5,11 +6,13 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export MAVEN_OPTS=-Xmx2g
 export VOLDEMORT_HOME=/usr/local/Cellar/voldemort/0.81/libexec
 export NODE_HOME=/usr/local/lib/node_modules
-
+export NODE_PATH=$NODE_HOME
 export PATH=/usr/local/mysql/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$HOME/tools/maven-mp/bin:$PATH
 export PATH=$HOME/code/cas/scripts:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/code/aurora/aurora-dev-tools/bin:$PATH
+export PATH=$HOME/code/aurora/scripts:$PATH
 
 alias sz='source ~/.zshrc'
 alias ez='emacs ~/.zshrc'
@@ -17,6 +20,13 @@ alias gitk='gitx'
 alias td='tmux detach'
 alias ta='tmux attach -t default'
 alias cas='cd ~/code/cas'
+alias aurora='cd ~/code/aurora'
+alias mci='mvn clean install -Denv=integration'
+alias mcc='mvn clean compile'
+alias gpr='git pull --rebase'
+alias clojure='cd ~/code/personal/clojure'
+alias mvnrelease='mvn -DautoVersionSubmodules=true release:prepare release:perform'
+alias ll='ls -latr'
 
 GRC=`which grc`
 if [ "$TERM" != dumb ] && [ -n GRC ]
@@ -47,7 +57,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew textmate)
+plugins=(git osx brew textmate dircycle dirpersist lein mvn)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,24 +109,4 @@ function url-encode; {
 # Search google for the given keywords.
 function google; {
         $VIEW "http://www.google.com/search?q=`url-encode "${(j: :)@}"`"
-}
-
-function extract() {
-   case $@ in
-       *.tar.bz2) tar -xvjf "$@"  ;;
-       *.tar.gz)  tar -xvzf "$@"  ;;
-       *.bz2)     bunzip2 "$@"  ;;
-       *.rar)     unrar x "$@"  ;;
-       *.gz)      gunzip "$@" ;;
-       *.tar)     tar xf "$@" ;;
-       *.tbz2)    tar -xvjf "$@"  ;;
-       *.tgz)     tar -xvzf "$@"  ;;
-       *.zip)     unzip "$@"    ;;
-       *.xpi)     unzip "$@"    ;;
-       *.Z)       uncompress "$@" ;;
-       *.7z)      7z x "$@" ;;
-       *.ace)     unace e "$@"  ;;
-       *.arj)     arj -y e "$@" ;;
-       *)         echo "'$@' cannot be extracted via $0()" ;;
-   esac
 }
